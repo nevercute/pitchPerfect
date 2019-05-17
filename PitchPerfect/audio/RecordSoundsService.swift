@@ -13,7 +13,7 @@ class RecordSoundsService {
     fileprivate var audioRecorder: AVAudioRecorder!
     fileprivate let session = AVAudioSession.sharedInstance()
     
-    open func recordAudio() {
+    open func recordAudio(delegator: AVAudioRecorderDelegate) {
         let date = Date.init()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd_hh-mm-ss"
@@ -23,12 +23,11 @@ class RecordSoundsService {
         let pathArray = [dirPath.path, recordingName]
         let filePath = URL(string: pathArray.joined(separator: "/"))
         
-        print(filePath!)
-        
         try! session.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
         try! session.setActive(true, options: .notifyOthersOnDeactivation)
         
         try! audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])
+        audioRecorder.delegate = delegator
         audioRecorder.isMeteringEnabled = false
         audioRecorder.prepareToRecord()
         audioRecorder.record()
@@ -38,4 +37,9 @@ class RecordSoundsService {
         audioRecorder.stop()
         try! session.setActive(false)
     }
+    
+    open func getRecordPath() -> URL {
+        return audioRecorder.url
+    }
+
 }

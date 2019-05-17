@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AVFoundation
 
-class RecordSoundsViewController: UIViewController {
+class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     let recordService = RecordSoundsService()
 
@@ -28,7 +29,7 @@ class RecordSoundsViewController: UIViewController {
         recordLabel.text = "Recording..."
         stopRecordButton.isHidden = false
         recordButton.isHidden = true
-        recordService.recordAudio()
+        recordService.recordAudio(delegator: self)
     }
     
     @IBAction func stopRecordingAudio(_ sender: UIButton) {
@@ -42,6 +43,20 @@ class RecordSoundsViewController: UIViewController {
     @IBOutlet weak var recordButton: UIButton!
     
     @IBOutlet weak var stopRecordButton: UIButton!
+    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        if flag {
+            performSegue(withIdentifier: "stopRecording", sender: recordService.getRecordPath()) 
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "stopRecording") {
+            let playSoundsVC = segue.destination as! PlaySoundsViewController
+            let recordedUrl = sender as! URL
+            playSoundsVC.recordedAudioUrl = recordedUrl
+        }
+    }
     
 }
 
