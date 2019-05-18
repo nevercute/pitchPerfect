@@ -98,7 +98,7 @@
                                                     <action selector="startPlayingAudio:" destination="DX6-uG-Ek9" eventType="touchUpInside" id="cjR-S3-x5L"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpx-kN-lo8" userLabel="Fast Button">
+                                            <button opaque="NO" tag="1" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpx-kN-lo8" userLabel="Fast Button">
                                                 <rect key="frame" x="160" y="0.0" width="160" height="134.5"/>
                                                 <state key="normal" image="Fast"/>
                                                 <userDefinedRuntimeAttributes>
@@ -115,7 +115,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IIx-6Z-4uv" userLabel="High LowPitch StackView">
                                         <rect key="frame" x="0.0" y="134.5" width="320" height="135"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iS6-gl-C8p" userLabel="High Pitch Button">
+                                            <button opaque="NO" tag="2" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iS6-gl-C8p" userLabel="High Pitch Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="135"/>
                                                 <state key="normal" image="HighPitch"/>
                                                 <userDefinedRuntimeAttributes>
@@ -127,7 +127,7 @@
                                                     <action selector="startPlayingAudio:" destination="DX6-uG-Ek9" eventType="touchUpInside" id="huf-jw-Wqy"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2v-Sh-t9J" userLabel="Low Pitch Button">
+                                            <button opaque="NO" tag="3" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2v-Sh-t9J" userLabel="Low Pitch Button">
                                                 <rect key="frame" x="160" y="0.0" width="160" height="135"/>
                                                 <state key="normal" image="LowPitch"/>
                                                 <userDefinedRuntimeAttributes>
@@ -144,7 +144,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VdC-Uj-96c" userLabel="Echo Reverb Stack">
                                         <rect key="frame" x="0.0" y="269.5" width="320" height="134.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfk-FA-ZeQ" userLabel="Echo Button">
+                                            <button opaque="NO" tag="4" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfk-FA-ZeQ" userLabel="Echo Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="134.5"/>
                                                 <state key="normal" image="Echo"/>
                                                 <userDefinedRuntimeAttributes>
@@ -156,7 +156,7 @@
                                                     <action selector="startPlayingAudio:" destination="DX6-uG-Ek9" eventType="touchUpInside" id="Bji-qx-Orw"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4S-pe-4ad" userLabel="Reverb Button">
+                                            <button opaque="NO" tag="5" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4S-pe-4ad" userLabel="Reverb Button">
                                                 <rect key="frame" x="160" y="0.0" width="160" height="134.5"/>
                                                 <state key="normal" image="Reverb"/>
                                                 <userDefinedRuntimeAttributes>
@@ -172,7 +172,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2PU-VD-yFI" userLabel="Stop Button">
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2PU-VD-yFI" userLabel="Stop Button">
                                 <rect key="frame" x="128" y="468" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="0w4-tr-Ouz"/>
@@ -196,13 +196,13 @@
                         <viewLayoutGuide key="safeArea" id="921-78-BqD"/>
                     </view>
                     <connections>
+                        <outlet property="chipmunkButton" destination="iS6-gl-C8p" id="C6Y-MI-cSU"/>
                         <outlet property="echoButton" destination="rfk-FA-ZeQ" id="44Y-ZU-e0C"/>
-                        <outlet property="fastButton" destination="qpx-kN-lo8" id="yAP-44-orD"/>
-                        <outlet property="highPitchButton" destination="iS6-gl-C8p" id="TtM-KF-bxD"/>
-                        <outlet property="lowPitchButton" destination="B2v-Sh-t9J" id="Pzk-RI-HVW"/>
+                        <outlet property="rabbitButton" destination="qpx-kN-lo8" id="r9V-6F-feC"/>
                         <outlet property="reverbButton" destination="s4S-pe-4ad" id="oPl-Tg-1mb"/>
                         <outlet property="snailButton" destination="bNU-R7-9nJ" id="8xE-uV-gxM"/>
                         <outlet property="stopButton" destination="2PU-VD-yFI" id="aeS-TJ-MHw"/>
+                        <outlet property="vaderButton" destination="B2v-Sh-t9J" id="NPc-ze-VpF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aUh-uT-gdr" userLabel="First Responder" sceneMemberID="firstResponder"/>

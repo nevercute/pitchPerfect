@@ -13,6 +13,7 @@ class RecordSoundsService {
     fileprivate var audioRecorder: AVAudioRecorder!
     fileprivate let session = AVAudioSession.sharedInstance()
     
+    //MARK: Recording audio service
     open func recordAudio(delegator: AVAudioRecorderDelegate) {
         let date = Date.init()
         let dateFormatter = DateFormatter()

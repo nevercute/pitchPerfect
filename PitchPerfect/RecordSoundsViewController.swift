@@ -26,35 +26,38 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     @IBAction func recordAudio(_ sender: Any) {
-        recordLabel.text = "Recording..."
-        stopRecordButton.isHidden = false
-        recordButton.isHidden = true
+        setRecordLabelAndButtonStates(labelText: "Recording...", hideRecordButton: true, hideStopButton: false)
         recordService.recordAudio(delegator: self)
     }
     
     @IBAction func stopRecordingAudio(_ sender: UIButton) {
-        recordLabel.text = "Tap To Record"
-        recordButton.isHidden = false
-        stopRecordButton.isHidden = true
-        
+        setRecordLabelAndButtonStates(labelText: "Tap To Record", hideRecordButton: false, hideStopButton: true)
         recordService.stopRecordAudio()
+    }
+    
+    fileprivate func setRecordLabelAndButtonStates(labelText: String, hideRecordButton: Bool, hideStopButton: Bool) {
+        recordLabel.text = labelText
+        stopRecordButton.isHidden = hideStopButton
+        recordButton.isHidden = hideRecordButton
     }
     
     @IBOutlet weak var recordButton: UIButton!
     
     @IBOutlet weak var stopRecordButton: UIButton!
     
+    //MARK: Perfirming segue when recording finished
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if flag {
             performSegue(withIdentifier: "stopRecording", sender: recordService.getRecordPath()) 
         }
     }
     
+    //MARK: Sending audio file path to the next view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "stopRecording") {
             let playSoundsVC = segue.destination as! PlaySoundsViewController
             let recordedUrl = sender as! URL
-            playSoundsVC.recordedAudioUrl = recordedUrl
+            playSoundsVC.recordedAudioURL = recordedUrl
         }
     }
     
