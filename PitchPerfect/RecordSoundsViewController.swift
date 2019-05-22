@@ -14,6 +14,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     let recordService = RecordSoundsService()
 
     @IBOutlet weak var recordLabel: UILabel!
+    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var stopRecordButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +42,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         stopRecordButton.isHidden = hideStopButton
         recordButton.isHidden = hideRecordButton
     }
-    
-    @IBOutlet weak var recordButton: UIButton!
-    
-    @IBOutlet weak var stopRecordButton: UIButton!
     
     //MARK: Perfirming segue when recording finished
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
